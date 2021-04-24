@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Editar Notas</title>
+	<h:outputStylesheet library="css" name="estilo.css" target="head"/>
+</h:head> 
+<body> 
+	
+	<ui:composition template="../resources/layouts/layout.xhtml">	
+	<ui:define name="content">
+	
+	<div class="titulo">
+		Cadastro de Notas
+	</div>
+	
+	<h:form class="form-login">
+		<h3>Notas - #{aluno.getNome()}</h3>
+		<p:messages closable="true" errorStyle="color:red" infoStyle="color:green" layout="table"/>
+		<div class="ui-g ui-fluid">
+				
+				<div class="ui-g-4">
+					<p:outputLabel value="Nota 1:" for="nota-um" />
+					<p:inputNumber minValue="0" maxValue="100" decimalPlaces="0" value="#{cadAlunoBean.aluno.notaUm}" id="nota-um"/>
+				</div>
+		
+				<div class="ui-g-4">
+					<p:outputLabel value="Nota 2:" for="nota-dois" />
+					<p:inputNumber minValue="0" maxValue="100" decimalPlaces="0" value="#{cadAlunoBean.aluno.notaDois}" id="nota-dois"/>
+				</div>
+				
+				<div class="ui-g-4">
+					<p:outputLabel value="Nota 3:" for="nota-tres" />
+					<p:inputNumber minValue="0" maxValue="100" decimalPlaces="0" value="#{cadAlunoBean.aluno.notaTres}" id="nota-tres"/>
+				</div>
+				
+		</div>
+		
+		<div class="ui-g ui-fluid">
+				
+				<div class="ui-g-6">
+					<p:outputLabel value="Nota Final:" for="nota-final" />
+					<p:inputNumber minValue="0" maxValue="100" decimalPlaces="0" value="#{cadAlunoBean.aluno.notaFinal}" id="nota-final"/>
+				</div>
+		
+				<div class="ui-g-6">
+					<p:outputLabel value="Faltas:" for="faltas" />
+					<p:inputNumber minValue="0" maxValue="100" decimalPlaces="0" value="#{cadAlunoBean.aluno.faltas}" id="faltas"/>
+				</div>
+				
+				
+		</div>
+		
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-5">
+					
+				</div>
+				<div class="ui-g-2">
+					<p:commandButton action="#{cadAlunoBean.salvarNotas(aluno)}" value="Salvar" ajax="false"/>
+				</div>
+				<div class="ui-g-5">
+					
+				</div>
+			</div>
+			</h:form>
+	
+	</ui:define>
+	</ui:composition>
+	
+</body> 
+</html>

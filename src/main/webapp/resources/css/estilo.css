@@ -1,0 +1,30 @@
+body {
+	font-family: Calibri !important;
+	font-size: 0.9em !important;
+	
+}
+
+.form-login{
+	text-align: center;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+.titulo {
+	font-size: 1.5rem; 
+	background-color: #ededed; 
+	margin: 5px 0 40px 0;
+	text-align: center;
+}
+
+.icon-space {
+	margin: 2px 5px 2px 5px;
+}
+
+.columnCenter {
+	text-align:center;	
+}
+
+.columnRight {
+	text-align:right;	
+}

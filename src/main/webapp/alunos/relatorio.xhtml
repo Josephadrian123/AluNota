@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Alunos</title>
+	<h:outputStylesheet library="css" name="estilo.css" target="head"/>
+	
+</h:head>
+<h:body>
+	<ui:composition template="../resources/layouts/layout.xhtml">	
+	<ui:define name="content">
+	
+	<div class="titulo">
+		Relatório
+	</div>
+	
+	
+	<p:messages closable="true" errorStyle="color:red" infoStyle="color:green" layout="table"/>
+	
+	<p:panel id="panel" header="Alunos cadastrados" style="background-color:#ededed">
+	
+		<h:form id="cons-aluno">
+			<p:commandButton action="#{consAlunoBean.excluirSelecionados}" value="Excluir selecionados" icon="fa fa-trash" ajax="false"/>
+			<p:dataTable value="#{consAlunoBean.alunos}" 
+				var="aluno" 
+				emptyMessage="Nenhum aluno cadastrado"
+				rowHover="true">
+				<f:facet name="header">Alunos</f:facet>
+			
+				<p:column headerText=" " styleClass="columnCenter" style="width:2.6%">
+					<p:selectBooleanCheckbox value="#{consAlunoBean.checked[aluno.id]}"/>
+				</p:column>
+			
+				
+				
+				<p:column headerText="Nome">
+					#{aluno.nome}
+				</p:column>
+				
+				<p:column headerText="Situação" styleClass="columnCenter">
+					#{aluno.getSituacao()}
+				</p:column>
+				
+				<p:column headerText="Média" styleClass="columnCenter">
+					#{aluno.mediaNotas()}
+				</p:column>
+				
+				<p:column headerText="Final" styleClass="columnCenter">
+					#{aluno.notaFinal}
+				</p:column>
+				
+				<p:column headerText="Data de Nascimento" styleClass="columnCenter">
+					<h:outputText value="#{aluno.dataNasc}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-3"/>
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Ações">
+						<p:commandButton action="#{cadAlunoBean.formEditar(aluno)}" value="Editar" icon="fa fa-pencil" ajax="false"/>
+						<p:commandButton action="#{consAlunoBean.excluir(aluno)}" value="Excluir" icon="fa fa-trash" ajax="false"/>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</p:panel>
+	</ui:define>
+    </ui:composition>
+</h:body>
+</html>

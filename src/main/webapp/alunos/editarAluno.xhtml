@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Editar Aluno</title>
+	<h:outputStylesheet library="css" name="estilo.css" target="head"/>
+</h:head> 
+<body> 
+	<ui:composition template="../resources/layouts/layout.xhtml">	
+	<ui:define name="content">
+	
+	<div class="titulo">
+		Editar dados do Aluno
+	</div>
+	
+	<h:form class="form-login">
+		<h3> #{aluno.getNome()}</h3>
+		<p:messages closable="true" errorStyle="color:red" infoStyle="color:green" layout="table"/>
+		<div class="ui-g ui-fluid">
+				
+				<div class="ui-g-6">
+					<p:outputLabel value="Nome:" for="nome" />
+					<p:inputText value="#{cadAlunoBean.aluno.nome}" id="nome"/>
+				</div>
+		
+				<div class="ui-g-6">
+					<p:outputLabel value="Data de Nascimento:" for="data-nasc" />
+					<p:calendar id="data-nasc" timeZone="GMT-3" value="#{cadAlunoBean.aluno.dataNasc}" navigator="true"
+		                        pattern="dd-MM-yyyy" />
+				</div>
+				
+				
+		</div>
+		
+			<div class="ui-g ui-fluid">
+				<div class="ui-g-5">
+					
+				</div>
+				<div class="ui-g-2">
+					<p:commandButton action="#{cadAlunoBean.editar(aluno)}" value="Salvar" ajax="false"/>
+				</div>
+				<div class="ui-g-5">
+					
+				</div>
+			</div>
+			</h:form>
+	
+	</ui:define>
+	</ui:composition>
+</body> 
+</html>
