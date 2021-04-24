@@ -2,10 +2,11 @@ package br.edu.ifpb.jaas.bean;
 
 import java.io.Serializable;
 
+
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -14,7 +15,7 @@ import br.edu.ifpb.jaas.controller.UsuarioController;
 import br.edu.ifpb.jaas.model.Usuario;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class LoginBean extends GenericBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -65,6 +66,8 @@ public class LoginBean extends GenericBean implements Serializable {
         session.invalidate();
         return "/login?faces-redirect=true";
     }
+    
+    
 
 	public Usuario getUsuario() {
 		return usuario;
